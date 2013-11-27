@@ -1,4 +1,6 @@
-Bwl.Framework
+Bwl.Network.ClientServerMessaging
 Igor Koshelev (igor@lifemotion.ru)
 
-Common library for many projects, implements mechanisms for Settings storages, Loggers, provides Application Bases for console and gui apps.
+Network TCP\IP Server and Client, sending\receiving 
+to each other Messages (array of fields).
+
