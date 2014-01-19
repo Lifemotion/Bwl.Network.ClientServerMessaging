@@ -1,5 +1,7 @@
 ﻿Imports System.Net.Sockets
 Imports System.Net
+Imports Bwl.Framework
+
 ''' <summary>
 ''' Клиент, работающий с сервером BWN по протоколу TCP\IP.
 ''' Поддерживает отправку\прием структурированных сообщений,
@@ -42,7 +44,7 @@ Public Class NetClient
         Init(Nothing, Nothing)
     End Sub
     Private Sub Init(ByVal storage As SettingsStorage, ByVal logger As Logger)
-        If storage Is Nothing Then storage = New SettingsStorage
+        If storage Is Nothing Then storage = New RootSettingsStorage
         If logger Is Nothing Then logger = New Logger
         defaultAddress = New StringSetting(storage, "Address", "localhost")
         defaultPort = New IntegerSetting(storage, "Port", 3130)

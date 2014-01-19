@@ -1,14 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Bwl.Network.ClientServerMessaging", "Bwl.Network.ClientServerMessaging\Bwl.Network.ClientServerMessaging.vbproj", "{E8D43E81-DE74-4F1C-9A3B-F3B16ADDFC18}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Bwl.Network.ClientServerMessaging.Test", "Bwl.Network.ClientServerMessaging.Test\Bwl.Network.ClientServerMessaging.Test.vbproj", "{D31646A7-2452-4F87-BBA2-AB531D6A1699}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Bwl.Framework", "..\bwl.Framework\bwl.Framework\Bwl.Framework.vbproj", "{E18C7249-22C8-4147-91EF-8A2721F0F026}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = bwl.Network.ClientServerMessaging.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -38,8 +39,21 @@ Global
 		{D31646A7-2452-4F87-BBA2-AB531D6A1699}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D31646A7-2452-4F87-BBA2-AB531D6A1699}.Release|x86.ActiveCfg = Release|x86
 		{D31646A7-2452-4F87-BBA2-AB531D6A1699}.Release|x86.Build.0 = Release|x86
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E18C7249-22C8-4147-91EF-8A2721F0F026}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = bwl.Network.ClientServerMessaging.vsmdi
 	EndGlobalSection
 EndGlobal
