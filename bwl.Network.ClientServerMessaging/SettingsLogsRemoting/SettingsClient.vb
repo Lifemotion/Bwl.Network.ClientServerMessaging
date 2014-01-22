@@ -2,7 +2,7 @@
 
     Private _prefix As String
     Private _client As NetClient
-    Private _existingSettingsStorage As ExistingSettingsStorage
+    Private _existingSettingsStorage As ClonedSettingsStorage
 
     Public Sub New(netClient As NetClient, prefix As String)
         AddHandler netClient.ReceivedMessage, AddressOf _client_ReceivedMessage
@@ -10,7 +10,7 @@
         _client = netClient
     End Sub
 
-    Public ReadOnly Property RemoteStorage As ExistingSettingsStorage
+    Public ReadOnly Property RemoteStorage As ClonedSettingsStorage
         Get
             Return _existingSettingsStorage
         End Get
@@ -26,7 +26,7 @@
                 Case "Settings"
                     Dim settingsString = message.Part(3)
                     Dim mrw = New MemoryReaderWriter(settingsString)
-                    Dim exSS = New ExistingSettingsStorage(mrw)
+                    Dim exSS = New ClonedSettingsStorage(mrw)
                     If _existingSettingsStorage IsNot Nothing Then
                         RemoveHandler _existingSettingsStorage.SettingChanged, AddressOf SettingChangedHandler
                     End If

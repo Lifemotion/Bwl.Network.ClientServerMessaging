@@ -44,7 +44,7 @@ Public Class NetClient
         Init(Nothing, Nothing)
     End Sub
     Private Sub Init(ByVal storage As SettingsStorage, ByVal logger As Logger)
-        If storage Is Nothing Then storage = New RootSettingsStorage
+        If storage Is Nothing Then storage = New SettingsStorageRoot
         If logger Is Nothing Then logger = New Logger
         defaultAddress = New StringSetting(storage, "Address", "localhost")
         defaultPort = New IntegerSetting(storage, "Port", 3130)

@@ -20,13 +20,13 @@
         AddHandler _settingsClient.SettingChangeError, AddressOf SettingChangeErrorHandler
     End Sub
 
-    Public ReadOnly Property LogsServer As LogsClient
+    Public ReadOnly Property LogsClient As LogsClient
         Get
             Return _logsClient
         End Get
     End Property
 
-    Public ReadOnly Property SettingsServer As SettingsClient
+    Public ReadOnly Property SettingsClient As SettingsClient
         Get
             Return _settingsClient
         End Get

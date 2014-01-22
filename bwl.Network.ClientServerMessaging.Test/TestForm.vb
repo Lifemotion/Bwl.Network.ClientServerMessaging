@@ -1,5 +1,5 @@
 ﻿Public Class TestForm
-    Private _storage As New RootSettingsStorage("testapp.ini", "TestApp")
+    Private _storage As New SettingsStorageRoot("testapp.ini", "TestApp")
     Private _child_1 As SettingsStorage = _storage.CreateChildStorage("Child-1", "Child 1")
     Private _child_2 As SettingsStorage = _storage.CreateChildStorage("Child-2", "Child 2")
     Private _child_1_1 As SettingsStorage = _child_1.CreateChildStorage("Child-1-1", "Child 1-1")
@@ -7,7 +7,7 @@
     Private boolSetting As BooleanSetting = _storage.CreateBooleanSetting("Boolean", True, "Булево", "Описание булевого")
     Private strSetting As StringSetting = _child_1.CreateStringSetting("String", "Cat", "Строка", "Описание строки")
     Private dblSetting As DoubleSetting = _child_2.CreateDoubleSetting("Double", 1.6, "Двойное", "Описание двойного")
-    Private varSetting As VariantSetting = _child_1_1.CreateVariantSetting("Variant", "Cat", "Cat,Dog", "Описание варианта")
+    Private varSetting As VariantSetting = _child_1_1.CreateVariantSetting("Variant", "Cat", {"Cat", "Dog"}, "Описание варианта")
 
     Private _logger As New Logger
 
