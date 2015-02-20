@@ -1,21 +1,41 @@
-﻿Public Class TestForm
-    Private _storage As New SettingsStorageRoot("testapp.ini", "TestApp")
-    Private _child_1 As SettingsStorage = _storage.CreateChildStorage("Child-1", "Child 1")
-    Private _child_2 As SettingsStorage = _storage.CreateChildStorage("Child-2", "Child 2")
-    Private _child_1_1 As SettingsStorage = _child_1.CreateChildStorage("Child-1-1", "Child 1-1")
-    Private intSetting As IntegerSetting = _storage.CreateIntegerSetting("Integer", 1, "Целое", "Описание целого")
-    Private boolSetting As BooleanSetting = _storage.CreateBooleanSetting("Boolean", True, "Булево", "Описание булевого")
-    Private strSetting As StringSetting = _child_1.CreateStringSetting("String", "Cat", "Строка", "Описание строки")
-    Private dblSetting As DoubleSetting = _child_2.CreateDoubleSetting("Double", 1.6, "Двойное", "Описание двойного")
-    Private varSetting As VariantSetting = _child_1_1.CreateVariantSetting("Variant", "Cat", {"Cat", "Dog"}, "Описание варианта")
+﻿
+Public Class TestForm
+    Inherits FormAppBase
 
-    Private _logger As New Logger
+    Private _logger As Logger = AppBase.RootLogger
+    Private _storage As SettingsStorage = AppBase.RootStorage
 
-    Private _server As New SettingsLogsServer(3165, "test", _storage, _logger)
-    Private _client As New SettingsLogsClient("test")
+    Private WithEvents _client As New NetClient
+    Private _clientAddress As New StringSetting(_storage, "ClientAddress", "localhost")
+    Private _clientPort As New IntegerSetting(_storage, "ClientPort", 3130)
 
     Private Sub TestForm_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        _client.NetClient.Connect("localhost", 3165)
-        _client.ShowSettings(Me)
+        SettingField1.AssignedSetting = _clientAddress
+        SettingField2.AssignedSetting = _clientPort
     End Sub
+
+    Private Sub bClientConnect_Click(sender As Object, e As EventArgs) Handles bClientConnect.Click
+        Try
+            _client.Connect(_clientAddress, _clientPort)
+            _logger.AddMessage("Подключено успешно")
+        Catch ex As Exception
+            _logger.AddWarning("Подключено неуспешно: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub bSend_Click(sender As Object, e As EventArgs) Handles bSend.Click
+        Dim parts = TextBox1.Text.Split(":")
+        Dim message As New NetMessage("S", parts)
+        Try
+            _client.SendMessage(message)
+            _logger.AddMessage("Отправлено клиентом: " + message.ToString)
+        Catch ex As Exception
+            _logger.AddWarning("Ошибка отправки: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub _client_ReceivedMessage(message As NetMessage) Handles _client.ReceivedMessage
+        _logger.AddMessage("Принято клиентом: " + message.ToString)
+    End Sub
+
 End Class
