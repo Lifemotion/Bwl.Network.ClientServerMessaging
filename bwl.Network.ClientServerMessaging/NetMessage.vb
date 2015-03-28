@@ -3,6 +3,32 @@ Public Class NetMessage
     Public Property DataType As Char
     Private parts()() As Byte
     Private partCount As Integer
+
+    Private Shared Function StringToDouble(str As String) As Double
+        If str Is Nothing Then Throw New Exception
+        Dim result As Double = 0.0
+        str = str.Trim.Replace(" ", "")
+        If Double.TryParse(str, result) Then Return result
+        If Double.TryParse(str.Replace(",", "."), result) Then Return result
+        If Double.TryParse(str.Replace(".", ","), result) Then Return result
+        Throw New Exception
+    End Function
+
+    Private Shared Function StringToDoubleSafe(str As String) As Double
+        Try
+            Return StringToDouble(str)
+        Catch ex As Exception
+            Return 0.0
+        End Try
+    End Function
+
+    Private Shared Function StringToBooleanSafe(str As String) As Boolean
+        If str Is Nothing Then Return False
+        If str.Trim.ToLower = "true" Then Return True
+        If str.Trim.ToLower = "1" Then Return True
+        If str.Trim.ToLower = "yes" Then Return True
+        Return False
+    End Function
     ''' <summary>
     ''' Кодирует последовательность байтов так, что в ней больше не встречаются символы двоеточия и все байты меньше 6.
     ''' </summary>
@@ -11,6 +37,7 @@ Public Class NetMessage
     ''' <remarks>
     ''' Каждый указанный байт заменяется на два: #5 и #(N+6)
     ''' </remarks>
+    ''' 
     Private Function CodeBytes(ByVal bytes() As Byte) As Byte()
         Dim result(bytes.Length * 2 - 1) As Byte
         Dim i As Integer
@@ -82,8 +109,6 @@ Public Class NetMessage
         For i = 0 To partCount - 1
             parts(i) = GetBytes(newParts(i))
         Next
-
-
     End Sub
     Public Property Part(ByVal index As Integer) As String
         Get
@@ -95,16 +120,15 @@ Public Class NetMessage
     End Property
     Public Property PartDouble(ByVal index As Integer) As Double
         Get
-            Return Val(Part(index))
+            Return StringToDoubleSafe(Part(index))
         End Get
         Set(ByVal value As Double)
-            Part(index) = value.ToString
+            Part(index) = value.ToString("0.0")
         End Set
     End Property
     Public Property PartBoolean(ByVal index As Integer) As Boolean
         Get
-            If Part(index).ToUpper = "TRUE" Or Part(index).ToUpper = "1" Then Return True
-            Return False
+            Return StringToBooleanSafe(Part(index))
         End Get
         Set(ByVal value As Boolean)
             Part(index) = value.ToString
