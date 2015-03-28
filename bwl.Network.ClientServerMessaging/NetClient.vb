@@ -1,6 +1,5 @@
 ﻿Imports System.Net.Sockets
 Imports System.Net
-Imports Bwl.Framework
 
 ''' <summary>
 ''' Клиент, работающий с сервером BWN по протоколу TCP\IP.
@@ -33,21 +32,11 @@ Public Class NetClient
     Private directMode As Boolean
     Private directServer As NetServer
     Public Property IgnoreNotConnected As Boolean
-    Private defaultAddress As StringSetting
-    Private defaultPort As IntegerSetting
+    Public Property DefaultAddress As String = "localhost"
+    Public Property DefaultPort As Integer = 3130
     Public Property AutoConnect As Boolean
-    Public useDoEvents As Boolean = True
-    Sub New(ByVal storage As SettingsStorage, ByVal logger As Logger)
-        Init(storage, logger)
-    End Sub
+
     Sub New()
-        Init(Nothing, Nothing)
-    End Sub
-    Private Sub Init(ByVal storage As SettingsStorage, ByVal logger As Logger)
-        If storage Is Nothing Then storage = New SettingsStorageRoot
-        If logger Is Nothing Then logger = New Logger
-        defaultAddress = New StringSetting(storage, "Address", "localhost")
-        defaultPort = New IntegerSetting(storage, "Port", 3130)
         pingTimer = New System.Timers.Timer
         pingTimer.Interval = 1000 * pingInterval
         pingTimer.Enabled = True
@@ -55,7 +44,7 @@ Public Class NetClient
         tcpSocket.SendBufferSize = systemBufferSize
         tcpSocket.ReceiveBufferSize = systemBufferSize
     End Sub
-
+   
     ''' <summary>
     ''' Подключиться к классу сервера без использования сети.
     ''' </summary>
@@ -341,11 +330,7 @@ Public Class NetClient
                 SendMessage(message)
                 Dim time As Single = Microsoft.VisualBasic.Timer
                 Do While waitingResult Is Nothing And Math.Abs(Microsoft.VisualBasic.Timer - time) < timeout
-                    If useDoEvents Then
-                        Application.DoEvents()
-                    Else
-                        Threading.Thread.Sleep(50)
-                    End If
+                    Threading.Thread.Sleep(50)
                 Loop
                 waitingAnswer = ""
                 Return waitingResult

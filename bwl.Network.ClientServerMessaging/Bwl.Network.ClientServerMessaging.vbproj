@@ -51,21 +51,11 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bwl.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\refs\Bwl.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <Import Include="Bwl.Framework" />
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Diagnostics" />
-    <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NetClient.vb" />
@@ -86,12 +76,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsLogsRemoting\SettingsClient.vb" />
-    <Compile Include="SettingsLogsRemoting\LogsClient.vb" />
-    <Compile Include="SettingsLogsRemoting\LogsServer.vb" />
-    <Compile Include="SettingsLogsRemoting\SettingsLogsClient.vb" />
-    <Compile Include="SettingsLogsRemoting\SettingsLogsServer.vb" />
-    <Compile Include="SettingsLogsRemoting\SettingsServer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
