@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <StartupObject>
     </StartupObject>
-    <RootNamespace>bwl.Network.ClientServerMessaging.FwRemoting</RootNamespace>
+    <RootNamespace>bwl.Network.ClientServerMessaging</RootNamespace>
     <AssemblyName>bwl.Network.ClientServerMessaging.FwRemoting</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
