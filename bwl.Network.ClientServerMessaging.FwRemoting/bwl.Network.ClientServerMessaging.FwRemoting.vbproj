@@ -30,7 +30,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\debug\dll-fwremoting\</OutputPath>
+    <OutputPath>..\release\dll-fwremoting\</OutputPath>
     <DocumentationFile>bwl.Network.ClientServerMessaging.FwRemoting.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
