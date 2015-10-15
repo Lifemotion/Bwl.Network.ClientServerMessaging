@@ -339,27 +339,6 @@ Public Class NetClient
             End Try
         End SyncLock
     End Function
-    'Public Function SendMessageWaitAnswer(ByVal message As Hierarchic, Optional ByVal timeout As Single = 20.0) As Hierarchic
-    '    SyncLock waiterRoot2
-    '        Try
-    '            waitingAnswer2 = message.Name
-    '            'waitingResult2 = Nothing
-    '            SendMessage(message)
-    '            Dim time As Single = Microsoft.VisualBasic.Timer
-    '            Do While waitingResult2 Is Nothing And Math.Abs(Microsoft.VisualBasic.Timer - time) < timeout
-    '                If useDoEvents Then
-    '                    Application.DoEvents()
-    '                Else
-    '                    Threading.Thread.Sleep(50)
-    '                End If
-    '            Loop
-    '            waitingAnswer2 = "gdfghfghfhfgyh6y75476i78w35561616456"
-    '            Return waitingResult2
-    '        Catch ex As Exception
-    '            Return Nothing
-    '        End Try
-    '    End SyncLock
-    'End Function
     ''' <summary>
     ''' Принимает сообщение напрямую от объекта-сервера без использования сети.
     ''' </summary>

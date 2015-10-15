@@ -2,9 +2,6 @@
 Public Class TestForm
     Inherits FormAppBase
 
-    Private _logger As Logger = AppBase.RootLogger
-    Private _storage As SettingsStorage = AppBase.RootStorage
-
     Private WithEvents _client As New NetClient
     Private _clientAddress As New StringSetting(_storage, "ClientAddress", "localhost")
     Private _clientPort As New IntegerSetting(_storage, "ClientPort", 3130)

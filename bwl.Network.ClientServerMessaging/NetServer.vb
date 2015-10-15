@@ -81,7 +81,7 @@ Public Class NetServer
     Const bufferStepSize As Integer = 1024 * 16
     Private tcpListener As TcpListener
     Private tcpPort As Integer
-	Private ReadOnly connectedClients As New List(Of ClientData)
+    Private ReadOnly connectedClients As New List(Of ClientData)
 	Private working As Boolean
 	Private pingFailsToDisconnect As Integer = 3
 	' Private log As LogWriter
