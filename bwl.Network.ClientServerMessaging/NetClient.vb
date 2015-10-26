@@ -8,8 +8,8 @@ Imports System.Net
 ''' </summary>
 ''' <remarks></remarks>
 Public Class NetClient
-    Const systemBufferSize = 256 * 1024
-    Const bufferStepSize As Integer = 1024 * 64
+    Const systemBufferSize = 2560 * 1024
+    Const bufferStepSize As Integer = 1024 * 640
     Const pingInterval As Integer = 10
     Private tcpSocket As Socket
     Private working As Boolean

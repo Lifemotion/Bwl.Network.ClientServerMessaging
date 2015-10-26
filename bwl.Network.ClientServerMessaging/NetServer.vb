@@ -76,9 +76,9 @@ End Class
 ''' </summary>
 ''' <remarks></remarks>
 Public Class NetServer
-    Const systemBufferSize = 256 * 1024
+    Const systemBufferSize = 2560 * 1024
     Const pingInterval As Integer = 10
-    Const bufferStepSize As Integer = 1024 * 16
+    Const bufferStepSize As Integer = 1024 * 640
     Private tcpListener As TcpListener
     Private tcpPort As Integer
     Private ReadOnly connectedClients As New List(Of ClientData)
