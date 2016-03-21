@@ -5,7 +5,7 @@ Public Class Responder
 
     Private Sub Responder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            server.StartServer(3333, False)
+            server.StartServer(3333)
 
         Catch ex As Exception
             End

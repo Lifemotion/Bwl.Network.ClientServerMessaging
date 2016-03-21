@@ -3,9 +3,9 @@
     Private _logsServer As LogsServer
     Private _netServer As NetServer
 
-    Public Sub New(netPort As Integer, prefix As String, storage As SettingsStorage, logger As Logger)
+    Public Sub New(netPort As String, prefix As String, storage As SettingsStorage, logger As Logger)
         Me.New(New NetServer, prefix, storage, logger)
-        _netServer.StartServer(netPort, False)
+        _netServer.StartServer(netPort)
     End Sub
 
     Public Sub New(netServer As NetServer, prefix As String, storage As SettingsStorage, logger As Logger)
